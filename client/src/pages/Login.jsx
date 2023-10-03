@@ -1,9 +1,10 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function Login() {
   return (
     <div>
-      <h1>Login page</h1>
+      <Typography variant="h1">Login page</Typography>
     </div>
   );
 }

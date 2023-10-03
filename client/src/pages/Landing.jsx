@@ -1,9 +1,10 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function Landing() {
   return (
     <div>
-      <h1>Landing page</h1>
+      <Typography variant="h1">Landing page</Typography>
     </div>
   );
 }
