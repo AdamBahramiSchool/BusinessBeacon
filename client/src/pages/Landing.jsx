@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar.jsx';
 function Landing() {
   return (
     <div>
-      <Navbar pageType="Sign In" />
+      <Navbar signIn="Sign In" />
       <Typography variant="h1">Landing page</Typography>
     </div>
   );

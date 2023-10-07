@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar.jsx';
 function Home() {
   return (
     <div>
-      <Navbar pageType="Logout" />
+      <Navbar logout="Logout" registerBusiness="Register Business"/>
       <Typography variant="h1">Home page</Typography>
     </div>
   );
