@@ -7,7 +7,7 @@ function Navbar({ pageType }) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            BusinessBeacon
+            BusinessBeacon!
           </Typography>
           <Button color="inherit">{pageType}</Button>
         </Toolbar>
