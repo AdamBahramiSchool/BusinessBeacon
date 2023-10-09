@@ -12,7 +12,9 @@ const GoogleMaps = () => {
   const markers = [
     { address: "SFU Burnaby", lat: 49.27804068641958, lng: -122.91997021328051 },
     { address: "A&W", lat: 49.2782863555282, lng: -122.91036445656796 },
-    { address: "Coco Bubble Tea", lat: 49.26198723284644, lng: -122.8903409629877 }
+    { address: "Starbucks", lat: 49.27979421821944, lng: -122.92100517175511 },
+    { address: "SFU Dining Commons", lat: 49.280588153210346, lng: -122.9250066733748 },
+    { address: "Tim Hortons", lat: 49.27874037934597, lng: -122.90917091186155 }
   ]
 
   const onMapLoad = map => {
