@@ -1,10 +1,14 @@
-import '../components/BusinessForm'
-import React from 'react'
+import React from 'react';
+import Navbar from '../components/Navbar.jsx';
+import BusinessForm from '../components/BusinessForm.jsx'; // Correct import statement
 
 function BusinessSignUp() {
   return (
-    <div>BusinessSignUp</div>
-  )
+    <div>
+        <Navbar logout="Logout" />
+        <BusinessForm /> {/* Use the BusinessForm component */}
+    </div>
+  );
 }
 
-export default BusinessSignUp
+export default BusinessSignUp;
