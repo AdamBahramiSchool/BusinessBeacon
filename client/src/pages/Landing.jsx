@@ -1,11 +1,12 @@
 import React from 'react';
 import { Typography, Container, Paper, Button } from '@mui/material';
 import Navbar from '../components/Navbar.jsx';
+import PageWrapper from '../components/PageWrapper.jsx';
 import landingStyles from '../components/landingStyles.jsx';
 
 function Landing() {
   return (
-    <div>
+    <PageWrapper style={landingStyles.pageWrapper}> 
       <Navbar pageType="Sign In" />
       <Container maxWidth="sm" sx={landingStyles.container}>
         <Paper sx={landingStyles.paper}>
@@ -21,7 +22,7 @@ function Landing() {
           </Button>
         </Paper>
       </Container>
-    </div>
+    </PageWrapper>
   );
 }
 
