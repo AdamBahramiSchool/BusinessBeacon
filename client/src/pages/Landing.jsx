@@ -11,7 +11,7 @@ function Landing() {
       <Container maxWidth="sm" sx={landingStyles.container}>
         <Paper sx={landingStyles.paper}>
           <Typography variant="h1" sx={landingStyles.slogan}>
-            BusinessBeacon: Bridging Businesses and Consumers, One Deal at a Time.
+            BusinessBeacon: Bridging Businesses and Consumers, One Deal at a Time!
           </Typography>
           <Button
             variant="contained"
