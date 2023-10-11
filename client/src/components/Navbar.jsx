@@ -7,9 +7,7 @@ function Navbar({ pageType }) {
       <AppBar position="static">
         <Toolbar>
           <img src="/images/logo.png" alt="Logo" style={{ marginRight: '5px', width: '40px', height: 'auto' }} />
-
-          {/* Apply dark blue outline effect */}
-          <Typography
+          <Typography 
             variant="h6"
             component="div"
             sx={{
@@ -20,14 +18,11 @@ function Navbar({ pageType }) {
               textStroke: '1px #084b8e',
               color: '#fff',
               display: 'inline-block',
-              
             }}
           >
             BusinessBeacon
           </Typography>
-
           <Button color="inherit">{pageType}</Button>
-
           <Button color="inherit" sx={{ position: 'absolute', right: '115px' }}>About</Button>
           <Button color="inherit" sx={{ position: 'absolute', right: '200px' }}>Why Us</Button>
         </Toolbar>
@@ -35,7 +30,6 @@ function Navbar({ pageType }) {
     </Box>
   );
 }
-
 export default Navbar;
 
 
