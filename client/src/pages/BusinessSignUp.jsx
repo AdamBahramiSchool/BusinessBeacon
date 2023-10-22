@@ -5,8 +5,8 @@ import BusinessForm from '../components/BusinessForm.jsx'; // Correct import sta
 function BusinessSignUp() {
   return (
     <div>
-        <Navbar logout="Logout" />
-        <BusinessForm /> {/* Use the BusinessForm component */}
+      <Navbar logout="Logout" />
+      <BusinessForm />
     </div>
   );
 }
