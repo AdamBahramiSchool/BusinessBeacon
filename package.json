@@ -1,0 +1,12 @@
+{
+  "name": "businessbeacon",
+  "version": "1.0.0",
+  "description": "BusinessBeacon is a web application designed to bridge the gap between businesses and consumers. By leveraging the power of Google Maps API, businesses can easily register and promote their ongoing deals, while consumers can effortlessly find and take advantage of promotions in their vicinity.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
