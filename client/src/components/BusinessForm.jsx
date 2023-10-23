@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
-import { TextField } from '@mui/material';
-
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import {
+  TextField,
+  Box,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Card,
+  Typography,
+  Button,
+} from '@mui/material';
 
 function BusinessForm() {
-  const [businessCategory, setBusinessCategory] = React.useState('');
-  const handleChange = (event) => {
-    setBusinessCategory(event.target.value);
-  };
-
   const boxStyle = {
-    width: '300px',
-    margin: '1.5rem',
+    width: 'auto',
+    margin: '2rem',
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        mt: '3rem',
-      }}
-    >
+    <Card sx={{ boxShadow: 1, borderRadius: 2.5, width: '575px' }}>
       <Box>
-        <Box className="bn_container" sx={{ textAlign: 'center', ...boxStyle }}>
+        <Box sx={{ textAlign: 'center', ...boxStyle }}>
           <TextField
             id="outlined-basic"
             label="Business Name"
@@ -36,7 +27,7 @@ function BusinessForm() {
             fullWidth
           />
         </Box>
-        <Box className="bl_container" sx={{ textAlign: 'center', ...boxStyle }}>
+        <Box sx={{ textAlign: 'center', ...boxStyle }}>
           <TextField
             id="outlined-basic"
             label="Business Location"
@@ -45,7 +36,19 @@ function BusinessForm() {
           />
         </Box>
 
-        <Box className="bc_container" sx={boxStyle}>
+        <Box sx={boxStyle}>
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Promotions/Deals"
+            placeholder="Describe your current deals and discounts"
+            multiline
+            minRows={5}
+            maxRows={5}
+            fullWidth
+          />
+        </Box>
+
+        <Box sx={boxStyle}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
               Type of Business
@@ -53,9 +56,7 @@ function BusinessForm() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={businessCategory}
               label="businesscategory"
-              onChange={handleChange}
             >
               <MenuItem value={'bank'}>Bank</MenuItem>
               <MenuItem value={'restaurant'}>Restaurant</MenuItem>
@@ -65,25 +66,20 @@ function BusinessForm() {
           </FormControl>
         </Box>
 
-        <Box className="pd_container" sx={boxStyle}>
-          <TextField
-            id="outlined-basic"
-            label="Promotions/Deals"
-            variant="outlined"
-            fullWidth
-          />
+        <Box sx={{ width: 'auto', marginLeft: '2rem' }}>
+          <Typography variant="caption" display="block" gutterBottom>
+            By clicking below, I agree to the Terms of Use and that I have read
+            the Privacy Statement.
+          </Typography>
         </Box>
 
-        <Box className="operationhours_container" sx={boxStyle}>
-          <TextField
-            id="outlined-basic"
-            label="Operation Hours"
-            variant="outlined"
-            fullWidth
-          />
+        <Box
+          sx={{ marginLeft: '2rem', marginTop: '0.8rem', marginBottom: '2rem' }}
+        >
+          <Button variant="contained">Register</Button>
         </Box>
       </Box>
-    </Box>
+    </Card>
   );
 }
 
