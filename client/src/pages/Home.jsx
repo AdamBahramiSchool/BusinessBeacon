@@ -20,7 +20,6 @@ function Home() {
   return (
     <div>
       <Navbar logout="Logout" registerBusiness="Register Business" />
-      <Typography variant="h1">Home page</Typography>
       <GoogleMaps />
     </div>
   );
