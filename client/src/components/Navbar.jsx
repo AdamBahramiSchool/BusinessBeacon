@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material/';
-import { handleSignOut } from '../api/authHelper';
+import { handleSignOut } from '../api/helper.js';
 
 function Navbar({ pageType }) {
   return (
