@@ -27,11 +27,13 @@ export default function LoginForm() {
       console.error('Google Sign-In Error:', error);
       // Handle errors here
     }
-  }
+  };
 
   return (
     <div>
-      <Button onClick={GoogleSignIn} variant="contained">Sign In with Google</Button>
+      <Button onClick={GoogleSignIn} variant="contained">
+        Sign In with Google
+      </Button>
     </div>
   );
 }

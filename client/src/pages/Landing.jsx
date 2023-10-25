@@ -7,7 +7,7 @@ import landingStyles from '../components/landingStyles.jsx';
 function Landing() {
   return (
     <PageWrapper style={landingStyles.pageWrapper}>
-      <Navbar pageType="Sign In" />
+      <Navbar pageType="landing" />
       <Container maxWidth="sm" sx={landingStyles.container}>
         <Paper sx={landingStyles.paper}>
           <Typography variant="h1" sx={landingStyles.slogan}>

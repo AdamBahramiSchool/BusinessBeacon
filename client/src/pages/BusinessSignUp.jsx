@@ -7,7 +7,7 @@ import landingStyles from '../components/landingStyles.jsx';
 function BusinessSignUp() {
   return (
     <div>
-      <Navbar logout="Logout" />
+      <Navbar pageType="home" />
       <Box
         display="flex"
         flexDirection="column"

@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <div>
-      <Navbar logout="Logout" registerBusiness="Register Business" />
+      <Navbar pageType="home" registerBusiness="Register Business" />
       <GoogleMaps />
     </div>
   );

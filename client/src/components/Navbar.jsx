@@ -1,8 +1,15 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material/';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  Container,
+} from '@mui/material/';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar({ signIn, logout, registerBusiness }) {
+function Navbar({ pageType }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -27,12 +34,24 @@ function Navbar({ signIn, logout, registerBusiness }) {
           >
             BusinessBeacon
           </Typography>
-          <Button color="inherit" sx={{ position: 'absolute', right: '115px' }}>
-            About
-          </Button>
-          <Button color="inherit" sx={{ position: 'absolute', right: '200px' }}>
-            Why Us
-          </Button>
+          {pageType === 'landing' && (
+            <div>
+              <Button
+                color="inherit"
+                sx={{ position: 'absolute', right: '115px' }}
+              >
+                About
+              </Button>
+              <Button
+                color="inherit"
+                sx={{ position: 'absolute', right: '200px' }}
+              >
+                Why Us
+              </Button>
+            </div>
+          )}
+
+          {pageType === 'home' && <Button color="inherit">Sign Out</Button>}
         </Toolbar>
       </AppBar>
     </Box>
