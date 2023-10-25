@@ -1,13 +1,6 @@
-import React from 'react';
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Button,
-  Container,
-} from '@mui/material/';
-import { useNavigate } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material/';
+import { handleSignOut } from '../api/authHelper';
 
 function Navbar({ pageType }) {
   return (
@@ -35,7 +28,7 @@ function Navbar({ pageType }) {
             BusinessBeacon
           </Typography>
           {pageType === 'landing' && (
-            <div>
+            <Fragment>
               <Button
                 color="inherit"
                 sx={{ position: 'absolute', right: '115px' }}
@@ -48,10 +41,14 @@ function Navbar({ pageType }) {
               >
                 Why Us
               </Button>
-            </div>
+            </Fragment>
           )}
 
-          {pageType === 'home' && <Button color="inherit">Sign Out</Button>}
+          {pageType === 'home' && (
+            <Button onClick={() => handleSignOut()} color="inherit">
+              Sign Out
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

@@ -17,7 +17,7 @@ export default function LoginForm() {
       const user = result.user;
 
       if (user !== null) {
-        console.log(user);
+        console.log('user: ', user);
         setIsAuthenticated(true);
         navigate('/home', { state: { isAuthenticated: true } });
       } else {
