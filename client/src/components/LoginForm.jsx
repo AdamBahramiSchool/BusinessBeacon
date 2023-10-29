@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { Button } from '@mui/material';
 import app from '../api/firebase';
@@ -6,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const GoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
@@ -18,8 +16,7 @@ export default function LoginForm() {
 
       if (user !== null) {
         console.log('user: ', user);
-        setIsAuthenticated(true);
-        navigate('/home', { state: { isAuthenticated: true } });
+        navigate('/home');
       } else {
         navigate('/login');
       }
