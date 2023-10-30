@@ -28,8 +28,10 @@ export async function registerBusiness({ name, location, promotion, type }) {
 
 export async function getAllBusinesses() {
   const querySnapshot = await getDocs(collection(db, 'businesses'));
+  const businesses = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
+    businesses.push(doc.data());
   });
+  return businesses;
 }

@@ -6,8 +6,10 @@ function Login() {
   return (
     <div>
       <Navbar pageType="landing" />
-      <Typography variant="h1">Login page</Typography>
-      <LoginForm />
+      <div style={{ height: "80vh", display: 'flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center' }}>
+        <Typography variant="h1" style={{marginBottom: "3rem"}}>Login page</Typography>
+        <LoginForm />
+      </div>
     </div>
   );
 }
