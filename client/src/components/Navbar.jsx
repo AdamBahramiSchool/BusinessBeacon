@@ -1,8 +1,18 @@
-import React, { Fragment } from 'react';
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material/';
-import { handleSignOut } from '../api/helper.js';
+import React from 'react';
+import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-function Navbar({ pageType }) {
+function Navbar({ pageType, isUserLoggedIn, handleSignOut }) {
+  const navigate = useNavigate();
+
+  const handleBusinessBeaconClick = () => {
+    navigate('/');
+
+    if (isUserLoggedIn) {
+      handleSignOut();
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -23,29 +33,25 @@ function Navbar({ pageType }) {
               textStroke: '1px #084b8e',
               color: '#fff',
               display: 'inline-block',
+              cursor: 'pointer', 
             }}
+            onClick={handleBusinessBeaconClick} 
           >
             BusinessBeacon
           </Typography>
           {pageType === 'landing' && (
-            <Fragment>
-              <Button
-                color="inherit"
-                sx={{ position: 'absolute', right: '115px' }}
-              >
+            <>
+              <Button color="inherit" sx={{ position: 'absolute', right: '115px' }}>
                 About
               </Button>
-              <Button
-                color="inherit"
-                sx={{ position: 'absolute', right: '200px' }}
-              >
+              <Button color="inherit" sx={{ position: 'absolute', right: '200px' }}>
                 Why Us
               </Button>
-            </Fragment>
+            </>
           )}
 
           {pageType === 'home' && (
-            <Button onClick={() => handleSignOut()} color="inherit">
+            <Button onClick={handleSignOut} color="inherit">
               Sign Out
             </Button>
           )}
@@ -54,4 +60,5 @@ function Navbar({ pageType }) {
     </Box>
   );
 }
+
 export default Navbar;
