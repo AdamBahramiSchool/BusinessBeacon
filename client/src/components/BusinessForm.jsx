@@ -51,7 +51,6 @@ function BusinessForm() {
       setBPromotions('');
       setBType('');
       setBPromotionPeriod('');
-      alert("Business succesfully registered");
       navigate('/home');
     }
   };
