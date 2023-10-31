@@ -35,7 +35,7 @@ const landingStyles = {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     animation: `${gradientAnimation} 10s ease infinite`,
-    position: 'relative', // Position relative for absolute elements
+    position: 'relative', 
     marginTop: '100px', 
   },
   slogan: {
