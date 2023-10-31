@@ -52,7 +52,7 @@ function BusinessForm() {
       setBType('');
       setBPromotionPeriod('');
       alert("Business succesfully registered");
-      // navigate('/home');
+      navigate('/home');
     }
   };
   
