@@ -1,16 +1,19 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleSignOut } from '../api/helper';
 
-function Navbar({ pageType, isUserLoggedIn, handleSignOut }) {
+function Navbar({ pageType }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBusinessBeaconClick = () => {
-    navigate('/');
-
-    if (isUserLoggedIn) {
-      handleSignOut();
-    }
+    if (
+      location.pathname === '/registerBusiness' ||
+      location.pathname === '/home'
+    ) {
+      navigate('/home');
+    } else navigate('/');
   };
 
   return (
@@ -33,27 +36,46 @@ function Navbar({ pageType, isUserLoggedIn, handleSignOut }) {
               textStroke: '1px #084b8e',
               color: '#fff',
               display: 'inline-block',
-              cursor: 'pointer', 
+              cursor: 'pointer',
             }}
-            onClick={handleBusinessBeaconClick} 
+            onClick={handleBusinessBeaconClick}
           >
             BusinessBeacon
           </Typography>
           {pageType === 'landing' && (
-            <>
-              <Button color="inherit" sx={{ position: 'absolute', right: '115px' }}>
+            <Fragment>
+              <Button
+                color="inherit"
+                sx={{ position: 'absolute', right: '115px' }}
+              >
                 About
               </Button>
-              <Button color="inherit" sx={{ position: 'absolute', right: '200px' }}>
+              <Button
+                color="inherit"
+                sx={{ position: 'absolute', right: '200px' }}
+              >
                 Why Us
               </Button>
-            </>
+            </Fragment>
           )}
 
           {pageType === 'home' && (
-            <Button onClick={handleSignOut} color="inherit">
-              Sign Out
-            </Button>
+            <Fragment>
+              <Button
+                onClick={handleSignOut}
+                color="inherit"
+                sx={{ position: 'absolute', right: '50px' }}
+              >
+                Sign Out
+              </Button>
+              <Button
+                onClick={() => navigate('/registerBusiness')}
+                color="inherit"
+                sx={{ position: 'absolute', right: '150px' }}
+              >
+                Register Your Business
+              </Button>
+            </Fragment>
           )}
         </Toolbar>
       </AppBar>
