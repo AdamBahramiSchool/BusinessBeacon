@@ -1,73 +1,80 @@
-import { GoogleMap, InfoWindowF, MarkerF, useLoadScript } from "@react-google-maps/api"
-import { useState, useEffect, useRef} from "react"
-import "../utils/Map.css"
-import "../api/helper.js"
-import { getAllBusinesses } from "../api/helper.js"
-
+import {
+  GoogleMap,
+  InfoWindowF,
+  MarkerF,
+  useLoadScript,
+} from '@react-google-maps/api';
+import { useState, useEffect, useRef } from 'react';
+import '../utils/Map.css';
+import '../api/helper.js';
+import { getAllBusinesses } from '../api/helper.js';
 
 const GoogleMaps = () => {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  })
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
 
-  const [mapRef, setMapRef] = useState(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [center, setCenter] = useState({ lat: 0, lng: 0 })
-  const [infoWindowData, setInfoWindowData] = useState([])
-  const [beacon, setBeacon] = useState(null)
-  const [markers, setMarkers] = useState([])
+  const [mapRef, setMapRef] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [center, setCenter] = useState({ lat: 0, lng: 0 });
+  const [infoWindowData, setInfoWindowData] = useState([]);
+  const [beacon, setBeacon] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
-
-  const onMapLoad = map => {
+  const onMapLoad = (map) => {
     if (isLoaded) {
-    setMapRef(map)
-    const bounds = new window.google.maps.LatLngBounds()
-    markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }))
-    map.fitBounds(bounds)
-    // setIsOpen(true);
+      setMapRef(map);
+      const bounds = new window.google.maps.LatLngBounds();
+      markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
+      const padding = { top: 5, right: 10, bottom: 5, left: 10 };
+      map.fitBounds(bounds, padding);
+      // zoom in more
+      map.setZoom(map.getZoom() - 1);
     }
-  }
+  };
 
   const handleMarkerClick = (id, lat, lng, address) => {
-    mapRef?.panTo({ lat, lng })
-    setInfoWindowData({ id, address })
-    setIsOpen(true)
-  }
+    mapRef?.panTo({ lat, lng });
+    setInfoWindowData({ id, address });
+    setIsOpen(true);
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords
-        setCenter({ lat: latitude, lng: longitude })
-        mapRef?.panTo({ lat: latitude, lng: longitude })
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setCenter({ lat: latitude, lng: longitude });
+        mapRef?.panTo({ lat: latitude, lng: longitude });
 
-        if (isLoaded){
-          setBeacon(new window.google.maps.Marker({ 
-          position: { lat: latitude, lng: longitude }, 
-          map: mapRef,
-          icon: {
-              path: window.google.maps.SymbolPath.CIRCLE,
-              scale: 10,
-              fillOpacity: 1,
-              strokeWeight: 2,
-              fillColor: '#5384ED',
-              strokeColor: '#ffffff',
-         },
-        }))
+        if (isLoaded) {
+          setBeacon(
+            new window.google.maps.Marker({
+              position: { lat: latitude, lng: longitude },
+              map: mapRef,
+              icon: {
+                path: window.google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillOpacity: 1,
+                strokeWeight: 2,
+                fillColor: '#5384ED',
+                strokeColor: '#ffffff',
+              },
+            })
+          );
         }
-      })
+      });
     }
-  }, [mapRef])
+  }, [mapRef]);
 
-
-  
   useEffect(() => {
     getAllBusinesses().then((allBusinesses) => {
       const promises = allBusinesses.map((business) => {
         const address = business.location;
         // console.log(address);
         const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+          address
+        )}&key=${apiKey}`;
 
         return fetch(url)
           .then((response) => response.json())
@@ -87,32 +94,39 @@ const GoogleMaps = () => {
     });
   }, []);
 
-  
   if (loadError) {
     return <div>Error loading Google Maps</div>;
   }
-
-
 
   return (
     <div className="App">
       {!isLoaded ? (
         <h1>Getting the best deals...</h1>
       ) : (
-        <GoogleMap center={center} zoom={14} mapContainerClassName="map-container" onLoad={onMapLoad} onClick={() => setIsOpen(false)}>
+        <GoogleMap
+          center={center}
+          zoom={14}
+          mapContainerClassName="map-container"
+          onLoad={onMapLoad}
+          onClick={() => setIsOpen(false)}
+        >
           {markers?.map(({ address, lat, lng }, ind) => (
             <MarkerF
               key={ind}
               position={{ lat, lng }}
               onClick={() => {
-                handleMarkerClick(ind, lat, lng, address)
+                handleMarkerClick(ind, lat, lng, address);
               }}
             >
               {isOpen && infoWindowData?.id === ind && (
-                <InfoWindowF onCloseClick={() => setIsOpen(false)} position={{ lat: markers[infoWindowData.id].lat, lng: markers[infoWindowData.id].lng }}>
-                  <div>
-                    {infoWindowData?.address}
-                  </div>
+                <InfoWindowF
+                  onCloseClick={() => setIsOpen(false)}
+                  position={{
+                    lat: markers[infoWindowData.id].lat,
+                    lng: markers[infoWindowData.id].lng,
+                  }}
+                >
+                  <div>{infoWindowData?.address}</div>
                 </InfoWindowF>
               )}
             </MarkerF>
@@ -120,7 +134,7 @@ const GoogleMaps = () => {
         </GoogleMap>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default GoogleMaps
+export default GoogleMaps;
