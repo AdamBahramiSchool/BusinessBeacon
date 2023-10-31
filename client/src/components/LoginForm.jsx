@@ -2,6 +2,8 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { Button } from '@mui/material';
 import app from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import GoogleIcon from '@mui/icons-material/Google';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -28,9 +30,9 @@ export default function LoginForm() {
 
   return (
     <div>
-      <Button onClick={GoogleSignIn} variant="contained">
-        Sign In with Google
-      </Button>
-    </div>
+<IconButton onClick={GoogleSignIn} color="primary" aria-label="Sign In with Google" >
+  <GoogleIcon sx={{ fontSize: 100 }} /> 
+</IconButton> 
+</div>
   );
 }
