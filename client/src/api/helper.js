@@ -15,13 +15,14 @@ export async function handleSignOut() {
   }
 }
 
-export async function registerBusiness({ name, location, promotion, type }) {
+export async function registerBusiness({ name, location, promotion, type,promotionPeriod }) {
   // Add a new document with a generated id.
   const docRef = await addDoc(collection(db, 'businesses'), {
     name,
     location,
     promotion,
     type,
+    promotionPeriod
   });
   console.log('Document written with ID: ', docRef.id);
 }
