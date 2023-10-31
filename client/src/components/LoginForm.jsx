@@ -30,9 +30,9 @@ export default function LoginForm() {
 
   return (
     <div>
-<IconButton onClick={GoogleSignIn} color="primary" aria-label="Sign In with Google" >
-  <GoogleIcon sx={{ fontSize: 100 }} /> 
-</IconButton> 
+<IconButton onClick={GoogleSignIn} color="primary" aria-label="Sign In with Google">
+  <img src="/images/google-logo.png" alt="Sign In with Google" style={{ width: '100px' }} />
+</IconButton>
 </div>
   );
 }

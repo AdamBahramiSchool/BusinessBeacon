@@ -28,7 +28,7 @@ function Landing() {
           </Button>
           
           <Typography variant="h4" sx={landingStyles.sectionTitle1}>
-            About Us
+            About
           </Typography>
           <Typography sx={landingStyles.sectionContent}>
           Business Beacon is a user-friendly web application connecting business owners and regular users in a dynamic, location-based ecosystem. It caters to the unique needs of each user type. For business owners, it offers a platform to promote deals and offers to a local audience, while regular users can discover nearby businesses, events, and activities with discounts. The map provides directions and real-time transportation times.
