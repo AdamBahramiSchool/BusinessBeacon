@@ -22,7 +22,7 @@ function BusinessSideBar({location, name, promotion, promotionPeriod, map}) {
 
         const request = {
         query: String(location),
-        fields: ['name', 'geometry', 'formatted_address'],
+        fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number'],
         };
 
         service.findPlaceFromQuery(request, (results, status) => {
@@ -36,18 +36,15 @@ function BusinessSideBar({location, name, promotion, promotionPeriod, map}) {
     return (
         
         !location
-        
         ? <div className="side-bar-empty" style={{position: 'absolute', zIndex: 2, padding: '20px'}}>
             Select a business to view more information
         </div> 
-        
-        :
-
-        <div className="side-bar" style={{position: 'absolute', zIndex: 2, padding: '20px'}}>
+        : <div className="side-bar" style={{position: 'absolute', zIndex: 2, padding: '20px'}}>
             {places.map((place, index) => (
             <div key={index}>
                 <h2>{name.toUpperCase()}</h2>
                 <p>{place.formatted_address}</p>
+                {place.formatted_phone_number != null ? <p>{place.formatted_phone_number}</p> : <p></p>} 
                 <h2>Current Promotion: {promotion}</h2>
                 <p>Promotion ends in: {promotionPeriod} hours</p>
             </div>
