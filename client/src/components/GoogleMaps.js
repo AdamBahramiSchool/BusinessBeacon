@@ -91,18 +91,23 @@ const GoogleMaps = () => {
   useEffect(() => {
     getAllBusinesses().then((allBusinesses) => {
       const promises = allBusinesses.map((business) => {
-        const address = business.location;
+        //  save the business information
+        // console.log(business);
+        const {location, name, promotion, promotionPeriod, type} = business;
+        // console.log(promotion);
+        // console.log(promotionPeriod);
+        // const address = location;
         // console.log(address);
         const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-          address
+          location
         )}&key=${apiKey}`;
 
         return fetch(url)
           .then((response) => response.json())
           .then((data) => {
             const { lat, lng } = data.results[0].geometry.location;
-            return { address, lat, lng };
+            return {location, lat, lng, name: name, promotion: promotion, promotionPeriod: promotionPeriod, type: type};
           })
           .catch((error) => {
             console.log(error);
@@ -111,7 +116,8 @@ const GoogleMaps = () => {
 
       Promise.all(promises).then((newMarkers) => {
         setMarkers(newMarkers);
-        console.log(markers);
+        
+        // console.log(markers);
       });
     });
   }, []);
@@ -147,9 +153,18 @@ const GoogleMaps = () => {
                   position={{
                     lat: markers[infoWindowData.id].lat,
                     lng: markers[infoWindowData.id].lng,
-                  }}
+                  }}  
                 >
-                  <div>{infoWindowData?.address}</div>
+                  {/* Display Info Window */}
+                  <div>
+                    <h1>
+                      {markers[infoWindowData.id].name}
+                    </h1>
+                    <h2>
+                      {markers[infoWindowData.id].promotion}
+                    </h2>
+                    <p>Promotion Period: {markers[infoWindowData.id].promotionPeriod} hours.</p>  
+                  </div>
                 </InfoWindowF>
               )}
             </MarkerF>
