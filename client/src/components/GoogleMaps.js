@@ -97,7 +97,7 @@ const GoogleMaps = () => {
         // console.log(promotion);
         // console.log(promotionPeriod);
         // const address = location;
-        // console.log(address);
+        console.log(location);
         const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
           location
@@ -163,7 +163,15 @@ const GoogleMaps = () => {
                     <h2>
                       {markers[infoWindowData.id].promotion}
                     </h2>
-                    <p>Promotion Period: {markers[infoWindowData.id].promotionPeriod} hours.</p>  
+                    <p>
+                      Promotion Period: {markers[infoWindowData.id].promotionPeriod} hours.
+                    </p>  
+                    <div>
+                    <a 
+                      href={`https://www.google.com/maps/search/?api=1&query=${markers[infoWindowData.id].lat},${markers[infoWindowData.id].lng}`} 
+                      target="_blank" rel="noreferrer">Directions
+                    </a>
+                    </div>
                   </div>
                 </InfoWindowF>
               )}
