@@ -128,7 +128,7 @@ const GoogleMaps = () => {
   }
 
   return (
-    <div className="App">
+    <div className="maps-page">
       {!isLoaded ? (
         <h1>Getting the best deals...</h1>
       ) : (
@@ -158,7 +158,7 @@ const GoogleMaps = () => {
                   {/* Display Info Window */}
                   <div>
                     <h1>
-                      {markers[infoWindowData.id].name}
+                        {markers[infoWindowData.id].name.toUpperCase()}
                     </h1>
                     <h2>
                       {markers[infoWindowData.id].promotion}
