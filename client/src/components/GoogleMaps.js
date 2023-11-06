@@ -24,12 +24,13 @@ const GoogleMaps = () => {
   const onMapLoad = (map) => {
     if (isLoaded) {
       setMapRef(map);
-      const bounds = new window.google.maps.LatLngBounds();
-      markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
-      const padding = { top: 5, right: 10, bottom: 5, left: 10 };
-      map.fitBounds(bounds, padding);
+      // const bounds = new window.google.maps.LatLngBounds();
+      // markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
+      // const padding = { top: 5, right: 10, bottom: 5, left: 10 };
+      // map.fitBounds(bounds);
       // zoom in more
-      map.setZoom(map.getZoom() - 1);
+      // map.setZoom(map.getZoom() - 1);
+      mapRef?.setZoom(5);
     }
   };
 
@@ -37,6 +38,7 @@ const GoogleMaps = () => {
     mapRef?.panTo({ lat, lng });
     setInfoWindowData({ id, address });
     setIsOpen(true);
+    mapRef?.setZoom(13);
   };
 
   useEffect(() => {
@@ -105,7 +107,7 @@ const GoogleMaps = () => {
       ) : (
         <GoogleMap
           center={center}
-          zoom={14}
+          zoom={12}
           mapContainerClassName="map-container"
           onLoad={onMapLoad}
           onClick={() => setIsOpen(false)}
