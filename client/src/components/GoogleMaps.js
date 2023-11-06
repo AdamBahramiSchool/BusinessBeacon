@@ -8,6 +8,9 @@ import { useState, useEffect, useRef } from 'react';
 import '../utils/Map.css';
 import '../api/helper.js';
 import { getAllBusinesses } from '../api/helper.js';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import BusinessSideBar from './BusinessSideBar';
 
 /**
  * Renders a Google Maps component with markers for businesses
@@ -17,6 +20,7 @@ const GoogleMaps = () => {
   // Load Google Maps API
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
   });
 
   // State variables
@@ -26,6 +30,7 @@ const GoogleMaps = () => {
   const [infoWindowData, setInfoWindowData] = useState([]); // Data for the info window
   const [beacon, setBeacon] = useState(null); // Marker for the user's location
   const [markers, setMarkers] = useState([]); // Markers for the businesses
+
 
   /**
    * Callback function when the map is loaded
@@ -57,6 +62,7 @@ const GoogleMaps = () => {
     setIsOpen(true);
     mapRef?.setZoom(13);
   };
+
 
   // Get the user's location and set the center of the map
   useEffect(() => {
@@ -130,54 +136,62 @@ const GoogleMaps = () => {
   return (
     <div className="maps-page">
       {!isLoaded ? (
-        <h1>Getting the best deals...</h1>
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
       ) : (
-        <GoogleMap
-          center={center}
-          zoom={12}
-          mapContainerClassName="map-container"
-          onLoad={onMapLoad}
-          onClick={() => setIsOpen(false)}
-        >
-          {markers?.map(({ address, lat, lng }, ind) => (
-            <MarkerF
-              key={ind}
-              position={{ lat, lng }}
-              onClick={() => {
-                handleMarkerClick(ind, lat, lng, address);
-              }}
-            >
-              {isOpen && infoWindowData?.id === ind && (
-                <InfoWindowF
-                  onCloseClick={() => setIsOpen(false)}
-                  position={{
-                    lat: markers[infoWindowData.id].lat,
-                    lng: markers[infoWindowData.id].lng,
-                  }}  
-                >
-                  {/* Display Info Window */}
-                  <div>
-                    <h1>
-                        {markers[infoWindowData.id].name.toUpperCase()}
-                    </h1>
-                    <h2>
-                      {markers[infoWindowData.id].promotion}
-                    </h2>
-                    <p>
-                      Promotion Period: {markers[infoWindowData.id].promotionPeriod} hours.
-                    </p>  
+          <div style={{display: "flex", flexDirection: "row", height: "100%", width: "100%", justifyContents: "center", alignItems: "center"}}>
+          <BusinessSideBar 
+            location={markers[infoWindowData.id]?.location}
+            map={mapRef}
+          />
+          <GoogleMap
+            center={center}
+            zoom={12}
+            mapContainerClassName="map-container"
+            onLoad={onMapLoad}
+            onClick={() => setIsOpen(false)}
+          >
+            {markers?.map(({ address, lat, lng }, ind) => (
+              <MarkerF
+                key={ind}
+                position={{ lat, lng }}
+                onClick={() => {
+                  handleMarkerClick(ind, lat, lng, address);
+                }}
+              >
+                {isOpen && infoWindowData?.id === ind && (
+                  <InfoWindowF
+                    onCloseClick={() => setIsOpen(false)}
+                    position={{
+                      lat: markers[infoWindowData.id].lat,
+                      lng: markers[infoWindowData.id].lng,
+                    }}  
+                  >
+                    {/* Display Info Window */}
                     <div>
-                    <a 
-                      href={`https://www.google.com/maps/search/?api=1&query=${markers[infoWindowData.id].lat},${markers[infoWindowData.id].lng}`} 
-                      target="_blank" rel="noreferrer">Directions
-                    </a>
+                      <h1>
+                          {markers[infoWindowData.id].name.toUpperCase()}
+                      </h1>
+                      <h2>
+                        {markers[infoWindowData.id].promotion}
+                      </h2>
+                      <p>
+                        Promotion Period: {markers[infoWindowData.id].promotionPeriod} hours.
+                      </p>  
+                      <div>
+                      <a 
+                        href={`https://www.google.com/maps/search/?api=1&query=${markers[infoWindowData.id].lat},${markers[infoWindowData.id].lng}`} 
+                        target="_blank" rel="noreferrer">Directions
+                      </a>
+                      </div>
                     </div>
-                  </div>
-                </InfoWindowF>
-              )}
-            </MarkerF>
-          ))}
-        </GoogleMap>
+                  </InfoWindowF>
+                )}
+              </MarkerF>
+            ))}
+          </GoogleMap>
+        </div>
       )}
     </div>
   );
