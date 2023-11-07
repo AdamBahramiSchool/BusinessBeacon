@@ -23,7 +23,7 @@ function BusinessForm() {
   const [bPromotions,setBPromotions]=useState('');
   const [bType,setBType]=useState('');
   const [bPromotionPeriod,setBPromotionPeriod]=useState();
-
+// make sure to add error handler, throw error when they try to enter address for busines that doesnt exist on google maps
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     let isValid = true; 
