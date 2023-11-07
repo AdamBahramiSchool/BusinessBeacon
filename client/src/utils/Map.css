@@ -1,4 +1,4 @@
-.maps-page{
+.maps-page {
   height: 92.5vh;
   width: 100vw;
 }
@@ -8,9 +8,31 @@
   width: 100%;
 }
 
-
 .side-bar {
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(255, 255, 255, 0.425) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.579) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.603) 0px 30px 60px -30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 75vh;
+  width: 35vw;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: top;
+  color: aliceblue;
+  background: linear-gradient(
+    45deg,
+    rgb(0, 115, 255) 0%,
+    rgba(56, 156, 255, 0.452) 100%
+  );
+}
+
+.side-bar-empty {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   height: 75vh;
@@ -20,20 +42,10 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  color:aliceblue;
-  background: linear-gradient(45deg, rgb(36, 26, 182) 0%, rgba(45, 83, 255, 0.51) 100%);}
-  
-  .side-bar-empty {
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  height: 75vh;
-  width: 25vw;
-  margin: 5rem auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  color:aliceblue;
-  background: linear-gradient(45deg, rgba(192, 203, 254, 0.469) 0%, rgba(69, 103, 255, 0.541) 100%);
+  color: aliceblue;
+  background: linear-gradient(
+    45deg,
+    rgba(192, 203, 254, 0.469) 0%,
+    rgba(69, 81, 255, 0.592) 100%
+  );
 }
