@@ -1,5 +1,6 @@
 .maps-page {
   height: 92.5vh;
+  max-height: 92.5vh;
   width: 100vw;
 }
 
@@ -8,44 +9,134 @@
   width: 100%;
 }
 
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  color: aliceblue;
+  text-align: center;
+  margin: 1rem;
+}
+.home-div {
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .side-bar {
-  box-shadow: rgba(255, 255, 255, 0.425) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.579) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.603) 0px 30px 60px -30px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  box-shadow: 10px 10px 50px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
   height: 75vh;
   width: 35vw;
-  margin: 5rem auto;
+  margin: 3rem;
+  padding: 3rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: top;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   color: aliceblue;
-  background: linear-gradient(
-    45deg,
-    rgb(0, 115, 255) 0%,
-    rgba(56, 156, 255, 0.452) 100%
-  );
+  background: linear-gradient(45deg, white 0%, #1976d2 100% 0.75);
+  box-sizing: border-box;
+  /* overflow: scroll; */
+  position: absolute;
+  z-index: 2;
+  font-family: "Roboto", sans-serif;
+  backdrop-filter: blur(10px);
+}
+
+.business-photo {
+  min-height: 15rem;
+  max-height: 15rem;
+  min-width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
+.side-bar-styling {
+  font-family: "Roboto", sans-serif;
+}
+
+.format-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(25, 118, 210, 0.65);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.box-1 {
+  font-weight: bolder;
+}
+
+.box-2 {
+  font-weight: bolder;
+  /* flex-direction: row; */
+}
+
+.box-4 {
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.direction-button {
+  cursor: pointer;
+  background-color: rgb(25, 118, 210);
+}
+
+.direction-button:hover {
+  background-color: #06bee1;
+  transition: all 0.4s ease;
 }
 
 .side-bar-empty {
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  height: 75vh;
-  width: 25vw;
-  margin: 5rem auto;
+  justify-content: center;
+}
+
+.name-and-rating {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-self: space-evenly;
   align-items: center;
-  color: aliceblue;
-  background: linear-gradient(
-    45deg,
-    rgba(192, 203, 254, 0.469) 0%,
-    rgba(69, 81, 255, 0.592) 100%
-  );
+  width: 100%;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.business-name-box {
+  display: flex;
+  height: 7rem;
+  width: 70%;
+  background-color: black;
+  border-radius: 30px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.rating-box {
+  display: flex;
+  height: 7rem;
+  width: 30%;
+  background-color: black;
+  border-radius: 30px;
+  overflow: auto;
+}
+
+.address-box {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  background-color: black;
+  border-radius: 20px;
+  overflow: auto;
+  margin-top: 1rem;
 }

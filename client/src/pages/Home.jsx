@@ -1,5 +1,5 @@
-import Navbar from '../components/Navbar.jsx';
-import GoogleMaps from '../components/GoogleMaps.js';
+import Navbar from "../components/Navbar.jsx";
+import GoogleMaps from "../components/GoogleMaps.js";
 
 function Home() {
   return (
@@ -11,5 +11,3 @@ function Home() {
 }
 
 export default Home;
-
-

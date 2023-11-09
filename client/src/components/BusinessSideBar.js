@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import StarIcon from "@mui/icons-material/Star";
 import { yellow } from "@mui/material/colors";
+import "../utils/Map.css";
 
 /**
  * Renders a sidebar component for a business, displaying its location, name, promotion, and promotion period.
@@ -39,44 +40,62 @@ function BusinessSideBar({ location, name, promotion, promotionPeriod, map }) {
   }, [location, name, promotion, promotionPeriod, map]); // Re-run this effect whenever map or location changes
 
   return !location ? (
-    <div
-      className="side-bar-empty"
-      style={{ position: "absolute", zIndex: 2, padding: "20px" }}
-    >
+    <div className="side-bar side-bar-empty">
       Select a business to view more information
     </div>
   ) : (
-    <div
-      className="side-bar"
-      style={{ position: "absolute", zIndex: 2, padding: "20px" }}
-    >
-      {/* {places.map((place, index) => ( */}
-      {/* <div key={index}> */}
-      <div>
-        {places?.photos && (
-          <img
-            src={places?.photos[0].getUrl()}
-            alt="Business"
-            style={{ width: "70%", height: "auto", marginBottom: "10px" }}
-          />
-        )}
-        <h2>
-          <span style={{ marginBottom: "20px 0", color: "gold" }}>
-            {places?.rating}
-          </span>
+    <div className="side-bar">
+      {places?.photos && (
+        <img
+          className="business-photo"
+          src={places?.photos[0].getUrl()}
+          alt="Business"
+        />
+      )}
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          rowGap: "0.5rem",
+        }}
+      >
+        <div
+          className="format-box box-1"
+          style={{ width: "78%", height: "19%" }}
+        >
+          {places?.name.toUpperCase()}
+        </div>
+        <div
+          className="format-box box-2"
+          style={{ width: "20%", height: "19%" }}
+        >
+          <span>{places?.rating}</span>
           <StarIcon sx={{ color: yellow[500] }} />
-        </h2>
-        <h2 style={{ margin: "20px 0" }}>{places?.name.toUpperCase()}</h2>
-        <p style={{ margin: "20px 0" }}>{places?.formatted_address}</p>
-        <p style={{ marginTop: "20px 0", marginBottom: "5px" }}>
-          Current Promotion:
-        </p>
-        <h2 style={{ marginBottom: "20px 0" }}>{promotion}</h2>
-        <p style={{ margin: "20px 0" }}>
-          Promotion ends in: {promotionPeriod} hours
-        </p>
-        <Button
-          variant="contained"
+        </div>
+        <div
+          className="format-box box-3"
+          style={{ width: "100%", height: "15%" }}
+        >
+          <p>{places?.formatted_address}</p>
+        </div>
+        <div
+          className="format-box box-4"
+          style={{ width: "100%", height: "23%" }}
+        >
+          Promotion: {promotion}
+        </div>
+        <div
+          className="format-box box-5"
+          style={{ width: "58%", height: "19%" }}
+        >
+          Promotion ends in: {promotionPeriod}
+        </div>
+        <a
+          className="format-box direction-button box-6"
+          style={{ width: "40%", height: "19%" }}
           href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
             places?.name
           )}`}
@@ -84,8 +103,10 @@ function BusinessSideBar({ location, name, promotion, promotionPeriod, map }) {
           rel="noreferrer"
         >
           Directions
-        </Button>
-        {/* <a
+        </a>
+      </div>
+
+      {/* <a
           href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
             places?.name
           )}`}
@@ -94,7 +115,7 @@ function BusinessSideBar({ location, name, promotion, promotionPeriod, map }) {
         >
           Directions
         </a> */}
-      </div>
+
       {/* ))} */}
     </div>
   );
