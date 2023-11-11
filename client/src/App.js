@@ -1,13 +1,13 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import BusinessSignUp from "./pages/BusinessSignUp";
-import { AuthContext } from "./Context/AuthContext";
-import { Protected } from "./pages/Protected";
-import HowItWorks from "./pages/HowItWorks";
+import React from "react"
+import { Routes, Route } from "react-router-dom"
+import Landing from "./pages/Landing"
+import Login from "./pages/Login"
+import Home from "./pages/Home"
+import AboutUs from "./pages/AboutUs"
+import BusinessSignUp from "./pages/BusinessSignUp"
+import { AuthContext } from "./Context/AuthContext"
+import { Protected } from "./pages/Protected"
+import HowItWorks from "./pages/HowItWorks"
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         />
       </Routes>
     </AuthContext>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,8 +1,21 @@
-import React, { Fragment } from 'react';
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material/';
-import { handleSignOut } from '../api/helper.js';
+import { Fragment } from 'react';
+import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleSignOut } from '../api/helper';
 
 function Navbar({ pageType }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleBusinessBeaconClick = () => {
+    if (
+      location.pathname === '/registerBusiness' ||
+      location.pathname === '/home'
+    ) {
+      navigate('/home');
+    } else navigate('/');
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -23,7 +36,9 @@ function Navbar({ pageType }) {
               textStroke: '1px #084b8e',
               color: '#fff',
               display: 'inline-block',
+              cursor: 'pointer',
             }}
+            onClick={handleBusinessBeaconClick}
           >
             BusinessBeacon
           </Typography>
@@ -45,13 +60,27 @@ function Navbar({ pageType }) {
           )}
 
           {pageType === 'home' && (
-            <Button onClick={() => handleSignOut()} color="inherit">
-              Sign Out
-            </Button>
+            <Fragment>
+              <Button
+                onClick={handleSignOut}
+                color="inherit"
+                sx={{ position: 'absolute', right: '50px' }}
+              >
+                Sign Out
+              </Button>
+              <Button
+                onClick={() => navigate('/registerBusiness')}
+                color="inherit"
+                sx={{ position: 'absolute', right: '150px' }}
+              >
+                Register Your Business
+              </Button>
+            </Fragment>
           )}
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
 export default Navbar;

@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography, Container, Paper, Button } from "@mui/material";
-import Navbar from "../components/Navbar.jsx";
-import PageWrapper from "../components/PageWrapper.jsx";
-import landingStyles from "../components/landingStyles.jsx";
+// import { Typography, Container, Paper, Button } from "@mui/material"
+// import Navbar from "../components/Navbar.jsx"
+// import PageWrapper from "../components/PageWrapper.jsx"
+// import landingStyles from "../components/landingStyles.jsx"
 import { useNavigate } from "react-router-dom";
 import "../utils/Landing.css";
 import splashImage from "../utils/SplashPageImg.png";
