@@ -1,6 +1,6 @@
 import {
   GoogleMap,
-  InfoWindowF,
+  // InfoWindowF,
   MarkerF,
   useLoadScript,
 } from "@react-google-maps/api";
