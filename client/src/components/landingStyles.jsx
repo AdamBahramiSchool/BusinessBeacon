@@ -37,39 +37,10 @@ const landingStyles = {
     position: "relative",
     marginTop: "100px",
   },
-  slogan: {
-    fontSize: "2rem",
-    fontWeight: "bold",
-    marginBottom: 4,
-  },
-  sectionTitle1: {
-    WebkitTextStroke: "1px #084b8e",
-    fontFamily: "Monaco, monospace",
-    color: "#fff",
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    marginTop: 10,
-    color: "black", // Change color as desired
-  },
-  sectionTitle2: {
-    WebkitTextStroke: "1px #084b8e",
-    fontFamily: "Monaco, monospace",
-    color: "#fff",
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    marginTop: 5,
-    color: "black",
-  },
-  sectionContent: {
-    fontSize: "1rem",
-    margin: "1.5rem 0",
-    WebkitTextStroke: "1px #084b8e",
-    fontFamily: "Monaco, monospace",
-    color: "black",
-  },
+
   button: {
     marginTop: 2,
-    padding: "10px 30px",
+    padding: "5px 15px",
     fontSize: "1rem",
   },
 };

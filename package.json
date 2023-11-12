@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mui/icons-material": "^5.14.16",
     "firebase": "^10.5.0"
   }
 }

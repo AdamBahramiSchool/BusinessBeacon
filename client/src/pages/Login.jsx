@@ -14,7 +14,6 @@ function Login() {
         <Container maxWidth="sm" sx={landingStyles.container}>
           <Paper sx={{ ...landingStyles.paper, marginTop: "-4rem" }}>
             <Typography variant="h4" style={{ marginBottom: "3rem", fontSize: "2rem", fontWeight: "bold" }}>
-              Sign-in with Google
             </Typography>
 
             <LoginForm />
