@@ -29,12 +29,15 @@ export default function LoginForm() {
 
   return (
     <div>
-    <div style={{ display: 'flex', alignItems: 'center', fontSize: '30px', fontWeight: 'bold', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
+    
       <IconButton onClick={GoogleSignIn} color="primary" aria-label="Sign In with Google">
+      <div style={{ display: 'flex', alignItems: 'center', fontSize: '30px', fontWeight: 'bold', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
       <img src="/images/google-logo.png" alt="Sign In with Google" style={{ width: '75px' }} />
-      </IconButton>
       <span style={{ marginLeft: '8px' }}>Continue With Google</span>
-     </div>
+      </div>
+      </IconButton>
+      
+     
 
     </div>
   );
