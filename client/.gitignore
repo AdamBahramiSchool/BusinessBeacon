@@ -12,7 +12,7 @@
 /build
 
 #google maps api key
-.env
+
 
 # misc
 .DS_Store
